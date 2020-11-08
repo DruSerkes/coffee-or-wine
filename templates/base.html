@@ -4,11 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coffee or Wine</title>
+    {% block header %}<title>Coffee or Wine</title>{% endblock %}
 </head>
 
 <body>
+    {% block content %}
+    <h1>Would you like...</h1>
 
+    <main>
+        <button class="Btn-Coffee">
+            Coffee
+        </button>
+        <span>or</span>
+        <button class="Btn-Wine">
+            Wine
+        </button>
+    </main>
+
+    {% endblock %}
 </body>
 
 </html>
