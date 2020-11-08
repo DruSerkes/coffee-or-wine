@@ -16,7 +16,7 @@ app.use(helmet());
 app.use(morgan('dev'));
 
 app.get('/', (req, res, next) => {
-    res.send("Welcome to Coffee or Wine");
+    res.render('base.html');
 })
 
 
