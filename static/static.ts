@@ -15,11 +15,20 @@ function locationFail(error: PositionError) {
     console.log(error);
 }
 
-function getCoords() {
+function getCoords(): void {
     navigator.geolocation.getCurrentPosition(locationSuccess, locationFail);
 }
 
-document.addEventListener('load', getCoords);
+function handleGetCoffee(): void {
+    getCoords();
+}
+
+function handleGetWine(): void {
+    getCoords();
+}
+
+coffeeBtn?.addEventListener('click', getCoords);
+wineBtn?.addEventListener('click', getCoords);
 
 
 
