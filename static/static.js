@@ -1,6 +1,12 @@
-var locationSuccess = function (position) { console.log(position.coords); };
-var locationFail = function (error) { console.log(error); };
 var latitude, longitude;
+function locationSuccess(position) {
+    console.log(position.coords);
+    latitude = position.coords.latitude;
+    longitude = position.coords.longitude;
+    console.log('latitude = ', latitude);
+    console.log('longitude = ', longitude);
+}
+function locationFail(error) { console.log(error); }
 function getCoords() {
     navigator.geolocation.getCurrentPosition(locationSuccess, locationFail);
 }
