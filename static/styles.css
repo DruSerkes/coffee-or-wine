@@ -38,6 +38,10 @@ button {
     text-align: center;
 }
 
+button:hover {
+    cursor: pointer;
+}
+
 .Btn-Coffee {
     background: #6F4E37;
     color: inherit;
@@ -46,6 +50,14 @@ button {
 .Btn-Wine {
     background: #722F37;
     color: inherit;
+}
+
+p {
+    font-size: 24px;
+    line-height: 44px;
+    padding: 1rem;
+    color: #2f2f2f;
+    font-family: 'Gorditas', Arial, Helvetica, sans-serif;
 }
 
 span {
