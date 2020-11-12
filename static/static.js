@@ -1,7 +1,7 @@
-var coffeeBtn = document.querySelector('.Btn-Coffee');
-var wineBtn = document.querySelector('.Btn-Wine');
-var latitude, longitude;
-var error;
+const coffeeBtn = document.querySelector('.Btn-Coffee');
+const wineBtn = document.querySelector('.Btn-Wine');
+let latitude, longitude, error;
+
 function locationSuccess(position) {
     console.log(position.coords);
     latitude = position.coords.latitude;
@@ -9,21 +9,28 @@ function locationSuccess(position) {
     console.log('latitude = ', latitude);
     console.log('longitude = ', longitude);
 }
+
 function locationFail(error) {
     console.log(error);
+    return error;
 }
+
 function getCoords() {
     navigator.geolocation.getCurrentPosition(locationSuccess, locationFail);
+    console.log('running getCoords');
 }
-function handleGetCoffee() {
-    getCoords();
+
+async function handleGetCoffee() {
+    const response = await fetch(`/coffee?latitude=${latitude}&longitude=${longitude}`, {
+        method: 'GET'
+    });
+    const data = await response.json();
+    console.log({ data });
 }
-function handleGetWine() {
-    getCoords();
-}
-// TODO Why isn't this working 
-coffeeBtn === null || coffeeBtn === void 0 ? void 0 : coffeeBtn.addEventListener('click', getCoords);
-wineBtn === null || wineBtn === void 0 ? void 0 : wineBtn.addEventListener('click', getCoords);
-// Checking that script is being read
-var logMe = function () { return console.log('logging typescript'); };
-logMe();
+
+function handleGetWine() { }
+
+coffeeBtn?.addEventListener('click', handleGetCoffee);
+wineBtn?.addEventListener('click', getCoords);
+window.addEventListener('load', getCoords);
+

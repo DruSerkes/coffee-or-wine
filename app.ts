@@ -2,6 +2,10 @@ import express from 'express';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import nunjucks from 'nunjucks';
+import axios from 'axios';
+import { API_KEY } from './config';
+
+const BASE_URL = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json';
 
 const app: express.Application = express();
 
