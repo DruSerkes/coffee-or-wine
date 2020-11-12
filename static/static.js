@@ -21,6 +21,12 @@ const handleGetCoffee = () => (window.location.assign(`https://maps.google.com/?
 
 const handleGetWine = () => (window.location.assign(`https://maps.google.com/?ll=${latitude},${longitude}&q=wine+bar&z=15`));
 
+const showButtons = () => {
+    if (!latitude || !longitude) return;
+    coffeeBtn.style.display = 'block';
+    wineBtn.style.display = 'block';
+};
+
 /*********************/
 /*  EVENT LISTENERS  */
 /*********************/
