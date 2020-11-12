@@ -2,6 +2,9 @@ const coffeeBtn = document.querySelector('.Btn-Coffee');
 const wineBtn = document.querySelector('.Btn-Wine');
 let latitude, longitude, error;
 
+/*********************/
+/*    CALLBACKS      */
+/*********************/
 const locationSuccess = (position) => {
     latitude = position.coords.latitude;
     longitude = position.coords.longitude;
@@ -18,6 +21,9 @@ const handleGetCoffee = () => (window.location.assign(`https://maps.google.com/?
 
 const handleGetWine = () => (window.location.assign(`https://maps.google.com/?ll=${latitude},${longitude}&q=wine+bar&z=15`));
 
+/*********************/
+/*  EVENT LISTENERS  */
+/*********************/
 coffeeBtn?.addEventListener('click', handleGetCoffee);
 wineBtn?.addEventListener('click', handleGetWine);
 window.addEventListener('load', getCoords);

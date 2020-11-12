@@ -25,34 +25,33 @@ app.get('/', (req, res, next) => {
 })
 
 
-app.get('/coffee', async (req, res, next) => {
-    const { latitude, longitude } = req.query;
-    try {
-        const response = await axios.get(BASE_URL, {
-            params: {
-                location: `${latitude},${longitude}`,
-                keyword: 'coffee',
-                rankby: 'distance',
-                key: API_KEY
-            }
-        })
-        const coffeeShops = response.data.results.map((shop: any) => {
-            let { icon, name, place_id, rating, vicinity } = shop;
-            let openNow = shop.permanently_closed ? false : shop.opening_hours ? shop.opening_hours.open_now : null;
-            let lat = shop.geometry.location.lat;
-            let lng = shop.geometry.location.lng;
-            let image = shop.photos[0].photo_reference;
-            return {
-                icon, name, place_id, rating, vicinity, openNow, lat, lng, image
-            }
-        });
-        console.log('coffeeShops == ', coffeeShops);
-        return res.json({ coffeeShops });
-    } catch (e) {
-        console.log(e)
-        return res.json(e);
-    }
-})
+// app.get('/coffee', async (req, res, next) => {
+//     const { latitude, longitude } = req.query;
+//     try {
+//         const response = await axios.get(BASE_URL, {
+//             params: {
+//                 location: `${latitude},${longitude}`,
+//                 keyword: 'coffee',
+//                 rankby: 'distance',
+//                 key: API_KEY
+//             }
+//         })
+//         const coffeeShops = response.data.results.map((shop: any) => {
+//             let { icon, name, place_id, rating, vicinity } = shop;
+//             let openNow = shop.permanently_closed ? false : shop.opening_hours ? shop.opening_hours.open_now : null;
+//             let lat = shop.geometry.location.lat;
+//             let lng = shop.geometry.location.lng;
+//             let image = shop.photos[0].photo_reference;
+//             return {
+//                 icon, name, place_id, rating, vicinity, openNow, lat, lng, image
+//             }
+//         });
+//         console.log('coffeeShops == ', coffeeShops);
+//         return res.json({ coffeeShops });
+//     } catch (e) {
+//         console.log(e)
+//         return res.json(e);
+//     }
+// })
 
 export { app };
-// module.exports = app
