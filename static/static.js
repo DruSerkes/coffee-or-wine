@@ -11,13 +11,12 @@ function locationSuccess(position) {
 }
 
 function locationFail(error) {
-    console.log(error);
-    return error;
+    console.log({ error });
+    window.location.reload();
 }
 
 function getCoords() {
     navigator.geolocation.getCurrentPosition(locationSuccess, locationFail);
-    console.log('running getCoords');
 }
 
 function handleGetCoffee() {
