@@ -20,17 +20,15 @@ function getCoords() {
     console.log('running getCoords');
 }
 
-async function handleGetCoffee() {
-    const response = await fetch(`/coffee?latitude=${latitude}&longitude=${longitude}`, {
-        method: 'GET'
-    });
-    const data = await response.json();
-    console.log({ data });
+function handleGetCoffee() {
+    window.location.assign(`https://maps.google.com/?ll=${latitude},${longitude}&q=coffee&z=15`);
 }
 
-function handleGetWine() { }
+function handleGetWine() {
+    window.location.assign(`https://maps.google.com/?ll=${latitude},${longitude}&q=wine+bar&z=15`);
+}
 
 coffeeBtn?.addEventListener('click', handleGetCoffee);
-wineBtn?.addEventListener('click', getCoords);
+wineBtn?.addEventListener('click', handleGetWine);
 window.addEventListener('load', getCoords);
 
